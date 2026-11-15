@@ -9,6 +9,8 @@ The project improves four neural networks of the SoccerNet-GSR baseline
 | Path | What it is |
 | --- | --- |
 | `plan/00_SPRINT.md` | **Start here.** The 3-day plan for the first batch of results: compute, fep setup, data packs, scope per task, day-by-day. It overrides the task files where they differ. |
+| `DATA_SETUP.md` | **Getting the data.** Download SoccerNet-GSR (train + valid) and build your training pack with one command, checked against the team's numbers. Also explains the pack D player crops: layout, `labels.csv` columns, pitfalls, loading code. |
+| `plan/TASK_D_STATUS.md` | Task D results so far (D0–D6), what worked, and how past SoccerNet winners solved jersey numbers. |
 | `plan/01_TEAM_RULES.md` | Rules for everyone: data splits (no mixing!), training rules, GPUs, pipeline runs, results tracker. |
 | `plan/TASK_A_detector.md` | Task A: person detector (YOLO11 / RT-DETR). |
 | `plan/TASK_B_calibration.md` | Task B: pitch keypoint network for camera calibration (NBJW HRNet). |

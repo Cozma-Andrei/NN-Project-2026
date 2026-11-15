@@ -53,6 +53,7 @@ Training runs on the shared fep A100 queue (SLURM, 12-hour job limit, long waits
 2. Run long jobs on the PC inside tmux: `tmux new -s <run name>`, start the command, detach with Ctrl+B then D, reattach with `tmux attach -t <run name>`.
 3. Keep the PC from sleeping (Windows power settings) during runs.
 4. A full pipeline run takes about 10 minutes per clip, so ~1h45 for the 10 ablation clips. Run the pipeline only for the best model of each experiment group, not for every training run.
+5. Keep it to a few GPU processes per card (2–3). On Nov 14, 5–6 processes per card made the NVIDIA driver fail (FECS exceptions) and Windows crashed (bugcheck 0x113, `VIDEO_DXGKRNL_FATAL_ERROR`). GPU 0 also drives the Windows display: cap jobs there so Windows keeps some GPU memory (e.g. `--gpu_mem_frac 0.6` in `tools/train_jersey.py`, or `torch.cuda.set_per_process_memory_fraction`).
 
 **Pipeline evaluation.** On day 1 the integration owner runs the baseline once on the 10 ablation clips and shares the saved state file (`outputs/.../states/sn-gamestate.pklz`). Reruns load it and run only the changed module and everything after it in the `pipeline:` list of `sn_gamestate/configs/soccernet.yaml`:
 
